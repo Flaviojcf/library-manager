@@ -7,7 +7,6 @@ namespace LibraryManager.Domain.Repositories
         Task AddAsync(Books book);
         Task<List<Books>> GetAllAsync();
         Task<Books> GetByIdAsync(int id);
-        Task DeleteAsync(Books book);
         Task SaveChangesAsync();
     }
 }

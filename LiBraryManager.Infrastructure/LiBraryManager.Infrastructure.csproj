@@ -18,8 +18,4 @@
     <ProjectReference Include="..\LibraryManager.Domain\LibraryManager.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Persistance\Repositories\" />
-  </ItemGroup>
-
 </Project>
