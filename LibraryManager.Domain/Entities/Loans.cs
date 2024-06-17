@@ -1,10 +1,10 @@
 ﻿namespace LibraryManager.Domain.Entities
 {
-    public class Loan(int userId, int bookId) : BaseEntity
+    public sealed class Loans(int userId, int bookId) : BaseEntity
     {
-        public User? User { get; private set; }
+        public Users? User { get; private set; }
         public int UserId { get; private set; } = userId;
-        public Book? Book { get; private set; }
+        public Books? Book { get; private set; }
         public int BookId { get; private set; } = bookId;
         public DateTime LoanDate { get; private set; }
         public DateTime LoanTime { get; private set; }
