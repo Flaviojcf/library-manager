@@ -4,5 +4,6 @@
     {
         public string Name { get; set; } = name;
         public string Email { get; set; } = email;
+        public List<Loan> Loans { get; private set; } = [];
     }
 }

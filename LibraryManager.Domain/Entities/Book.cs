@@ -6,5 +6,6 @@
         public string Title { get; private set; } = title;
         public string ISBN { get; private set; } = iSBN;
         public int YearPublication { get; private set; } = yearPublication;
+        public List<Loan> Loans { get; private set; } = [];
     }
 }

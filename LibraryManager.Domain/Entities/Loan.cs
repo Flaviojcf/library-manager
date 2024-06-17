@@ -2,11 +2,13 @@
 {
     public class Loan(int userId, int bookId) : BaseEntity
     {
+        public User? User { get; private set; }
         public int UserId { get; private set; } = userId;
+        public Book? Book { get; private set; }
         public int BookId { get; private set; } = bookId;
         public DateTime LoanDate { get; private set; }
         public DateTime LoanTime { get; private set; }
-        public DateTime DevolutionDate { get; private set; }
+        public DateTime? DevolutionDate { get; private set; }
         public bool IsReturned { get; private set; } = false;
 
         public void GetLoan()
