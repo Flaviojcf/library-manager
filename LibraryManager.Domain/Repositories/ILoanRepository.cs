@@ -4,6 +4,7 @@ namespace LibraryManager.Domain.Repositories
 {
     public interface ILoanRepository
     {
-        Task AddAsync(Loan loan);
+        Task AddAsync(Loans loan);
+        Task SaveChangesAsync();
     }
 }
