@@ -1,6 +1,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using LibraryManager.API.Filter;
+using LibraryManager.API.Middlewares;
 using LibraryManager.Application.Commands.CreateBook;
 using LibraryManager.Application.Commands.UpdateBook;
 using LibraryManager.Application.Validators;
@@ -35,6 +36,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware(typeof(GlobalErrorHandlingMiddleware));
 
 app.UseHttpsRedirection();
 
