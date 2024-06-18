@@ -26,7 +26,7 @@ namespace LibraryManager.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace LibraryManager.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace LibraryManager.API.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] UpdateBookCommand command)
+        public async Task<IActionResult> Put(Guid id, [FromBody] UpdateBookCommand command)
         {
             try
             {

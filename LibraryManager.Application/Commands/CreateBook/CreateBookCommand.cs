@@ -2,7 +2,7 @@
 
 namespace LibraryManager.Application.Commands.CreateBook
 {
-    public class CreateBookCommand(string author, string title, string iSBN, int yearPublication) : IRequest<int>
+    public class CreateBookCommand(string author, string title, string iSBN, int yearPublication) : IRequest<Guid>
     {
         public string Author { get; private set; } = author;
         public string Title { get; private set; } = title;

@@ -6,7 +6,7 @@ namespace LibraryManager.Domain.Repositories
     {
         Task AddAsync(Books book);
         Task<List<Books>> GetAllAsync();
-        Task<Books> GetByIdAsync(int id);
+        Task<Books> GetByIdAsync(Guid id);
         Task SaveChangesAsync();
     }
 }
