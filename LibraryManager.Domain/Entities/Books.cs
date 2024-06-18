@@ -2,12 +2,21 @@
 
 namespace LibraryManager.Domain.Entities
 {
-    public sealed class Books(string author, string title, string iSBN, int yearPublication) : BaseEntity
+    public sealed class Books : BaseEntity
     {
-        public string Author { get; private set; } = author;
-        public string Title { get; private set; } = title;
-        public string ISBN { get; private set; } = iSBN;
-        public int YearPublication { get; private set; } = yearPublication;
+        public Books(string author, string title, string iSBN, int yearPublication)
+        {
+            ValidateDomain(author, title, iSBN, yearPublication);
+            Author = author;
+            Title = title;
+            ISBN = iSBN;
+            YearPublication = yearPublication;
+        }
+
+        public string Author { get; private set; } 
+        public string Title { get; private set; }
+        public string ISBN { get; private set; } 
+        public int YearPublication { get; private set; }
         public bool IsActive { get; private set; } = true;
         public List<Loans> Loans { get; private set; } = [];
 
