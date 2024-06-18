@@ -19,7 +19,7 @@ namespace LiBraryManager.Infrastructure.Persistance.Repositories
             return await _dbContext.Books.Where(b => b.IsActive).ToListAsync();
         }
 
-        public async Task<Books> GetByIdAsync(int id)
+        public async Task<Books> GetByIdAsync(Guid id)
         {
             return await _dbContext.Books.SingleOrDefaultAsync(b => b.Id == id);
         }

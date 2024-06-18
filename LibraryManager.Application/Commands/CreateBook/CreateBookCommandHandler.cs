@@ -4,10 +4,10 @@ using MediatR;
 
 namespace LibraryManager.Application.Commands.CreateBook
 {
-    public class CreateBookCommandHandler(IBookRepository bookRepository) : IRequestHandler<CreateBookCommand, int>
+    public class CreateBookCommandHandler(IBookRepository bookRepository) : IRequestHandler<CreateBookCommand, Guid>
     {
         private readonly IBookRepository _bookRepository = bookRepository;
-        public async Task<int> Handle(CreateBookCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
             var book = new Books(request.Author, request.Title, request.ISBN, request.YearPublication);
 

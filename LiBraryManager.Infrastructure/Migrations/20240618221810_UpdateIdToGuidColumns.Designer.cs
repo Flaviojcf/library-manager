@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiBraryManager.Infrastructure.Migrations
 {
     [DbContext(typeof(LibraryManagerDbContext))]
-    [Migration("20240617184336_UpdateLoanColumn")]
-    partial class UpdateLoanColumn
+    [Migration("20240618221810_UpdateIdToGuidColumns")]
+    partial class UpdateIdToGuidColumns
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,25 +25,32 @@ namespace LiBraryManager.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("LibraryManager.Domain.Entities.Book", b =>
+            modelBuilder.Entity("LibraryManager.Domain.Entities.Books", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Author")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("ISBN")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("YearPublication")
                         .HasColumnType("int");
@@ -53,16 +60,17 @@ namespace LiBraryManager.Infrastructure.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("LibraryManager.Domain.Entities.Loan", b =>
+            modelBuilder.Entity("LibraryManager.Domain.Entities.Loans", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("DevolutionDate")
                         .HasColumnType("datetime2");
@@ -76,8 +84,11 @@ namespace LiBraryManager.Infrastructure.Migrations
                     b.Property<DateTime>("LoanTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -88,13 +99,14 @@ namespace LiBraryManager.Infrastructure.Migrations
                     b.ToTable("Loans");
                 });
 
-            modelBuilder.Entity("LibraryManager.Domain.Entities.User", b =>
+            modelBuilder.Entity("LibraryManager.Domain.Entities.Users", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -104,20 +116,23 @@ namespace LiBraryManager.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("LibraryManager.Domain.Entities.Loan", b =>
+            modelBuilder.Entity("LibraryManager.Domain.Entities.Loans", b =>
                 {
-                    b.HasOne("LibraryManager.Domain.Entities.Book", "Book")
+                    b.HasOne("LibraryManager.Domain.Entities.Books", "Book")
                         .WithMany("Loans")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("LibraryManager.Domain.Entities.User", "User")
+                    b.HasOne("LibraryManager.Domain.Entities.Users", "User")
                         .WithMany("Loans")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -128,12 +143,12 @@ namespace LiBraryManager.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LibraryManager.Domain.Entities.Book", b =>
+            modelBuilder.Entity("LibraryManager.Domain.Entities.Books", b =>
                 {
                     b.Navigation("Loans");
                 });
 
-            modelBuilder.Entity("LibraryManager.Domain.Entities.User", b =>
+            modelBuilder.Entity("LibraryManager.Domain.Entities.Users", b =>
                 {
                     b.Navigation("Loans");
                 });
