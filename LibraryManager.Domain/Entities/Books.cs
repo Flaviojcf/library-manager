@@ -44,11 +44,13 @@ namespace LibraryManager.Domain.Entities
         public void ReduceAvailableQuantityByGetLoan()
         {
             AvailableQuantity = AvailableQuantity - 1;
+            UpdatedAt = DateTime.Now;
         }
 
         public void AddAvailableQuantityByPayLoan()
         {
             AvailableQuantity = AvailableQuantity + 1;
+            UpdatedAt = DateTime.Now;
         }
 
         public void Update(string author, string title, string iSBN, int yearPublication)

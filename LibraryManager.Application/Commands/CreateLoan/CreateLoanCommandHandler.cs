@@ -1,35 +1,20 @@
-﻿using LibraryManager.Application.Exceptions;
+﻿using LibraryManager.Application.Commands.ValidateBook;
+using LibraryManager.Application.Commands.ValidateUser;
 using LibraryManager.Domain.Entities;
 using LibraryManager.Domain.Repositories;
 using MediatR;
 
 namespace LibraryManager.Application.Commands.CreateLoan
 {
-    public class CreateLoanCommandHandler(ILoanRepository loanRepository, IBookRepository bookRepository, IUserRepository userRepository) : IRequestHandler<CreateLoanCommand, Guid>
+    public class CreateLoanCommandHandler(ILoanRepository loanRepository, IMediator mediator) : IRequestHandler<CreateLoanCommand, Guid>
     {
         private readonly ILoanRepository _loanRepository = loanRepository;
-        private readonly IBookRepository _bookRepository = bookRepository;
-        private readonly IUserRepository _userRepository = userRepository;
+        private readonly IMediator _mediator = mediator;
         public async Task<Guid> Handle(CreateLoanCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetByIdAsync(request.UserId);
+            await _mediator.Send(new ValidateUserCommand(request.UserId), cancellationToken);
 
-            if (user == null)
-            {
-                throw new NotFoundException($"O usuário com o id {request.UserId} não foi encontrado");
-            }
-
-            var book = await _bookRepository.GetByIdAsync(request.BookId);
-
-            if (book == null)
-            {
-                throw new NotFoundException($"O livro com o id {request.UserId} não foi encontrado");
-            }
-
-            if (book.AvailableQuantity == 0)
-            {
-                throw new BookNotAvailableException($"O livro com o id {request.BookId} não está disponível no momento");
-            }
+            await _mediator.Send(new ValidateBookCommand(request.BookId), cancellationToken);
 
             var loan = new Loans(request.UserId, request.BookId);
 

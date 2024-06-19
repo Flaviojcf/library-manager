@@ -33,7 +33,7 @@ namespace LibraryManager.API.Middlewares
                 errorValidation = new ErrorValidation($"{ex.Message} {ex?.InnerException?.Message}", HttpStatusCode.NotFound);
                 context.Response.StatusCode = (int)HttpStatusCode.NotFound;
             }
-            if (exceptionType == typeof(BookNotAvailableException))
+            else if (exceptionType == typeof(BookNotAvailableException))
             {
                 errorValidation = new ErrorValidation($"{ex.Message} {ex?.InnerException?.Message}", HttpStatusCode.Conflict);
                 context.Response.StatusCode = (int)HttpStatusCode.Conflict;
