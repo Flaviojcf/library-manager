@@ -2,6 +2,8 @@
 using LibraryManager.Application.Commands.DeleteLoan;
 using LibraryManager.Application.Commands.PayLoan;
 using LibraryManager.Application.Exceptions;
+using LibraryManager.Application.Queries.GetAllLoans;
+using LibraryManager.Application.Queries.GetLoanById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,11 +20,28 @@ namespace LibraryManager.API.Controllers
         {
             try
             {
-                //var getLoanByIdQuery = new GetLoanByIdQuery(id);
+                var getLoanByIdQuery = new GetLoanByIdQuery(id);
 
-                //var book = await _mediator.Send(getLoanByIdQuery);
+                var loan = await _mediator.Send(getLoanByIdQuery);
 
-                return Ok();
+                return Ok(loan);
+            }
+            catch (NotFoundException ex)
+            {
+                throw new NotFoundException(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll(string query)
+        {
+            try
+            {
+                var getAllLoansQuery = new GetAllLoansQuery(query);
+
+                var loans = await _mediator.Send(getAllLoansQuery);
+
+                return Ok(loans);
             }
             catch (NotFoundException ex)
             {
