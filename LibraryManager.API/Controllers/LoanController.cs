@@ -58,6 +58,10 @@ namespace LibraryManager.API.Controllers
 
                 return CreatedAtAction(nameof(GetById), new { id }, command);
             }
+            catch (BookNotAvailableException ex)
+            {
+                throw new BookNotAvailableException(ex.Message);
+            }
             catch (NotFoundException ex)
             {
                 throw new NotFoundException(ex.Message);
