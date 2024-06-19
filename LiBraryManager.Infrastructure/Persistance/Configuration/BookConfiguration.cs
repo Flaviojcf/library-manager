@@ -9,6 +9,8 @@ namespace LiBraryManager.Infrastructure.Persistance.Configuration
         public void Configure(EntityTypeBuilder<Books> builder)
         {
             builder.HasKey(b => b.Id);
+
+            builder.Property(b => b.Price).HasPrecision(18, 2);
         }
     }
 }
