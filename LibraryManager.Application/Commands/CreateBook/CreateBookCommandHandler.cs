@@ -9,7 +9,7 @@ namespace LibraryManager.Application.Commands.CreateBook
         private readonly IBookRepository _bookRepository = bookRepository;
         public async Task<Guid> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
-            var book = new Books(request.Author, request.Title, request.ISBN, request.YearPublication);
+            var book = new Books(request.Author, request.Title, request.ISBN, request.YearPublication, request.TotalQuantity, request.Price);
 
             await _bookRepository.AddAsync(book);
 
