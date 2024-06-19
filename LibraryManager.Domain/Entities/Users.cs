@@ -1,4 +1,5 @@
 ﻿using LibraryManager.Domain.Validation;
+using System.Text.Json.Serialization;
 
 namespace LibraryManager.Domain.Entities
 {
@@ -13,6 +14,8 @@ namespace LibraryManager.Domain.Entities
 
         public string Name { get; set; }
         public string Email { get; set; }
+
+        [JsonIgnore]
         public List<Loans> Loans { get; private set; } = [];
         public bool IsActive { get; private set; } = true;
 
