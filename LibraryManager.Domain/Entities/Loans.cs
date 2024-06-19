@@ -11,6 +11,20 @@
         public DateTime? DevolutionDate { get; private set; }
         public bool IsReturned { get; private set; } = false;
 
+        public bool IsActive { get; private set; } = true;
+
+        public void Active()
+        {
+            IsActive = true;
+            UpdatedAt = DateTime.Now;
+        }
+
+        public void DeActive()
+        {
+            IsActive = false;
+            UpdatedAt = DateTime.Now;
+        }
+
         public void GetLoan()
         {
             LoanDate = DateTime.Now;

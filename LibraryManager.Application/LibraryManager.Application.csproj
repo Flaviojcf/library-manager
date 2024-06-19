@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\DeleteLoan\" />
     <Folder Include="Queries\GetAllLoans\" />
     <Folder Include="Queries\GetLoanById\" />
   </ItemGroup>
