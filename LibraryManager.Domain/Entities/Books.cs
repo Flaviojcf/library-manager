@@ -1,4 +1,5 @@
 ﻿using LibraryManager.Domain.Validation;
+using System.Text.Json.Serialization;
 
 namespace LibraryManager.Domain.Entities
 {
@@ -13,11 +14,13 @@ namespace LibraryManager.Domain.Entities
             YearPublication = yearPublication;
         }
 
-        public string Author { get; private set; } 
+        public string Author { get; private set; }
         public string Title { get; private set; }
-        public string ISBN { get; private set; } 
+        public string ISBN { get; private set; }
         public int YearPublication { get; private set; }
         public bool IsActive { get; private set; } = true;
+
+        [JsonIgnore]
         public List<Loans> Loans { get; private set; } = [];
 
         public void Active()

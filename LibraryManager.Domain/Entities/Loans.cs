@@ -35,6 +35,7 @@
         {
             IsReturned = true;
             DevolutionDate = DateTime.Now;
+            IsActive = false;
         }
 
         public bool IsOverdue()

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManager.Domain", "LibraryManager.Domain\LibraryManager.Domain.csproj", "{5E7DCA07-8539-47D3-8EAE-DCA1A5B6C7CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryManager.Domain", "LibraryManager.Domain\LibraryManager.Domain.csproj", "{5E7DCA07-8539-47D3-8EAE-DCA1A5B6C7CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiBraryManager.Infrastructure", "LiBraryManager.Infrastructure\LiBraryManager.Infrastructure.csproj", "{3C482BC6-EDA5-4FC6-82C5-366F03135547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiBraryManager.Infrastructure", "LiBraryManager.Infrastructure\LiBraryManager.Infrastructure.csproj", "{3C482BC6-EDA5-4FC6-82C5-366F03135547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManager.API", "LibraryManager.API\LibraryManager.API.csproj", "{45DBD27D-5A43-4CA7-94A3-F06F407DE17A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryManager.API", "LibraryManager.API\LibraryManager.API.csproj", "{45DBD27D-5A43-4CA7-94A3-F06F407DE17A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManager.Application", "LibraryManager.Application\LibraryManager.Application.csproj", "{92C1F297-A74E-4501-BEB7-D45001AF9F97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryManager.Application", "LibraryManager.Application\LibraryManager.Application.csproj", "{92C1F297-A74E-4501-BEB7-D45001AF9F97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

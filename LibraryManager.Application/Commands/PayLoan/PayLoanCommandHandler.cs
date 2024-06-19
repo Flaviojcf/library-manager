@@ -19,8 +19,6 @@ namespace LibraryManager.Application.Commands.PayLoan
 
             loan.ReturnLoan();
 
-            loan.DeActive();
-
             await _loanRepository.SaveChangesAsync();
 
             return loan;
