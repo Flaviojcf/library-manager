@@ -26,6 +26,11 @@ namespace LibraryManager.Application.Commands.CreateLoan
                 throw new NotFoundException($"O livro com o id {request.UserId} não foi encontrado");
             }
 
+            if (book.AvailableQuantity == 0)
+            {
+                throw new BookNotAvailableException($"O livro com o id {request.BookId} não está disponível no momento");
+            }
+
             var loan = new Loans(request.UserId, request.BookId);
 
             loan.GetLoan();
