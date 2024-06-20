@@ -7,6 +7,7 @@ namespace LibraryManager.Domain.Repositories
         Task AddAsync(Users user);
         Task<List<Users>> GetAllAsync();
         Task<Users> GetByIdAsync(Guid id);
+        Task<Users> GetUserByEmailAndPasswordAsync(string email, string passwordHash);
         Task SaveChangesAsync();
     }
 }

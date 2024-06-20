@@ -5,12 +5,14 @@ using LibraryManager.Application.Exceptions;
 using LibraryManager.Application.Queries.GetAllLoans;
 using LibraryManager.Application.Queries.GetLoanById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LoanController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;

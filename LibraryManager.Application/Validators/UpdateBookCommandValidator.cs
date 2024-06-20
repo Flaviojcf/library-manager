@@ -7,6 +7,7 @@ namespace LibraryManager.Application.Validators
     {
         public UpdateBookCommandValidator()
         {
+            RuleFor(b => b.Id).NotEmpty().WithMessage("O campo Id é obrigatório");
             RuleFor(b => b.Author).NotEmpty().WithMessage("O campo autor é obrigatório");
             RuleFor(b => b.Title).NotEmpty().WithMessage("O campo título é obrigatório");
             RuleFor(b => b.ISBN).NotEmpty().WithMessage("O campo ISBN é obrigatório");

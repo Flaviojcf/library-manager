@@ -5,12 +5,14 @@ using LibraryManager.Application.Exceptions;
 using LibraryManager.Application.Queries.GetAllBooks;
 using LibraryManager.Application.Queries.GetBookById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManager.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BooksController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;

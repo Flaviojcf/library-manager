@@ -5,15 +5,17 @@ namespace LibraryManager.Domain.Entities
 {
     public sealed class Users : BaseEntity
     {
-        public Users(string name, string email)
+        public Users(string name, string email, string password)
         {
-            ValidateDomain(name, email);
+            ValidateDomain(name, email, password);
             Name = name;
             Email = email;
+            Password = password;
         }
 
         public string Name { get; set; }
         public string Email { get; set; }
+        public string Password { get; private set; }
 
         [JsonIgnore]
         public List<Loans> Loans { get; private set; } = [];
@@ -37,10 +39,11 @@ namespace LibraryManager.Domain.Entities
             UpdatedAt = DateTime.Now;
         }
 
-        private static void ValidateDomain(string name, string email)
+        private static void ValidateDomain(string name, string email, string password)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(name), "O campo nome é obrigatório");
             DomainExceptionValidation.When(string.IsNullOrEmpty(email), "O campo email é obrigatório");
+            DomainExceptionValidation.When(string.IsNullOrEmpty(password), "O campo senha é obrigatório");
         }
     }
 }
