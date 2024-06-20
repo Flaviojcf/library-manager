@@ -1,4 +1,5 @@
-﻿using LibraryManager.Application.Commands.ValidateBook;
+﻿using LibraryManager.Application.Commands.ReduceBookAvailableQuantity;
+using LibraryManager.Application.Commands.ValidateBook;
 using LibraryManager.Application.Commands.ValidateUser;
 using LibraryManager.Domain.Entities;
 using LibraryManager.Domain.Repositories;
@@ -15,6 +16,8 @@ namespace LibraryManager.Application.Commands.CreateLoan
             await _mediator.Send(new ValidateUserCommand(request.UserId), cancellationToken);
 
             await _mediator.Send(new ValidateBookCommand(request.BookId), cancellationToken);
+
+            await _mediator.Send(new ReduceBookAvaillableQuantityCommand(request.BookId), cancellationToken);
 
             var loan = new Loans(request.UserId, request.BookId);
 

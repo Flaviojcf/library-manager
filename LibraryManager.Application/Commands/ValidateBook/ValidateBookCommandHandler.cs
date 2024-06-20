@@ -21,10 +21,6 @@ namespace LibraryManager.Application.Commands.ValidateBook
                 throw new BookNotAvailableException($"O livro com o id {request.Id} não está disponível no momento");
             }
 
-            book.ReduceAvailableQuantityByGetLoan();
-
-            await _bookRepository.SaveChangesAsync();
-
             return Unit.Value;
         }
     }

@@ -1,9 +1,14 @@
-﻿namespace LibraryManager.Domain.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace LibraryManager.Domain.Entities
 {
     public sealed class Loans(Guid userId, Guid bookId) : BaseEntity
     {
+        [JsonIgnore]
         public Users? User { get; private set; }
         public Guid UserId { get; private set; } = userId;
+
+        [JsonIgnore]
         public Books? Book { get; private set; }
         public Guid BookId { get; private set; } = bookId;
         public DateTime LoanDate { get; private set; }
@@ -29,12 +34,14 @@
         {
             LoanDate = DateTime.Now;
             LoanTime = DateTime.Now.AddDays(30);
+            UpdatedAt = DateTime.Now;
         }
 
         public void ReturnLoan()
         {
             IsReturned = true;
             DevolutionDate = DateTime.Now;
+            UpdatedAt = DateTime.Now;
             IsActive = false;
         }
 
