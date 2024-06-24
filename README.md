@@ -17,7 +17,6 @@ Este é um projeto que permite o gerenciamento de livros, login e autenticação
 - MediatR
 - JWT (Json Web Token)
 - FluentValidation
-- Moq
 - Swagger
 
 
